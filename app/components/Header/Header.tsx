@@ -1,7 +1,7 @@
 /* write me a nextjs component that I can use for a general site header with a logo on the left and a navigation bar and login button on the right. Use Tailwind CSS for any styling */
 
 import Link from "next/link";
-
+import LoginButton from "../LoginButton/LoginButton";
 
 export default function Header() {
     return (
@@ -30,11 +30,12 @@ export default function Header() {
 
                     {/* Login Button */}
                     <div className="flex items-center">
-                        <Link href="/login">
-                            <button className="ml-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        {/* <Link href="/login"> */}
+                            <LoginButton />
+                            {/*<button className="ml-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
                                 Login
-                            </button>
-                        </Link>
+                            </button>*/}
+                        {/* </Link> */}
                     </div>
                 </div>
             </div>
