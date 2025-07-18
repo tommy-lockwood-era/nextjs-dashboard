@@ -1,34 +1,45 @@
-export default function PeopleTable() {
-    const people = [
-        {
-            name: "Steve",
-            job: "Landscaper"
-        },
-        {
-            name: "Ankit",
-            job: "Undertaker"
-        },
-        {
-            name: "Mark",
-            job: "Database Administrator"
-        }
-    ];
+import { fetchCustomers } from '@/app/lib/data';
+import { CustomerField } from '@/app/lib/definitions';
+
+export default async function PeopleTable({ people }: { people: CustomerField[] }) {
+    // const people1 = [
+    //     {
+    //         name: "Steve",
+    //         id: "Landscaper"
+    //     },
+    //     {
+    //         name: "Ankit",
+    //         id: "Undertaker"
+    //     },
+    //     {
+    //         name: "Mark",
+    //         id: "Database Administrator"
+    //     }
+    // ];
+    function add(x: number, y: number) {
+        return x + y;
+    }
+
+    const add2 = (x: number, y: number) => {
+        return x + y;
+    }
+
+    const add3 = (x: number, y: number) => x + y;
 
     return (
         <table>
-            <tr>
-                <th>Name</th>
-                <th>Job</th>
-            </tr>
-            <tr>
-                <td>Steve</td>
-                <td>Landscaper</td>
-            </tr>
-            {/* <...> */}
-
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+                {people.map((person) => 
+                    <tr>
+                        <td>{person.id}</td>
+                        <td>{person.name}</td>
+                    </tr>
+                )}
+            </tbody>
         </table>
     );
 }
-
-
-
