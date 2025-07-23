@@ -33,8 +33,8 @@ export default async function PeopleTable({ people }: { people: CustomerField[] 
                     <th>ID</th>
                     <th>Name</th>
                 </tr>
-                {people.map((person) => 
-                    <tr>
+                {people.map((person, index) => 
+                    <tr key={index}>
                         <td>{person.id}</td>
                         <td>{person.name}</td>
                     </tr>

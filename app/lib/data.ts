@@ -16,12 +16,12 @@ export async function fetchRevenue() {
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
 
-    // console.log('Fetching revenue data...');
-    // await new Promise((resolve) => setTimeout(resolve, 3000));
+    console.log('Fetching revenue data...');
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await sql<Revenue[]>`SELECT * FROM revenue`;
 
-    // console.log('Data fetch completed after 3 seconds.');
+    console.log('Data fetch completed after 3 seconds.');
 
     return data;
   } catch (error) {
@@ -181,6 +181,40 @@ export async function fetchCustomers() {
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch all customers.');
+  }
+}
+
+export async function createOptions() {
+  try {
+    const customers = await sql`
+      CREATE TABLE options (
+        option_id INT PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(100) NOT NULL,
+        value VARCHAR(255) NOT NULL,
+        last_updated TIMESTAMP NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp
+      )
+    `;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to create options table.');
+  }
+}
+
+export async function addOption(name: string, value: string) {
+  try {
+    const customers = await sql`
+      INSERT INTO options ( name, value )
+      VALUES (
+
+      )
+        name VARCHAR(100) NOT NULL,
+        value VARCHAR(255) NOT NULL,
+        last_updated TIMESTAMP NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp
+      )
+    `;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to create options table.');
   }
 }
 
